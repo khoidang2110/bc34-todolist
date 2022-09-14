@@ -95,7 +95,7 @@ let showDataCheck = (getListTask)=> {
             ${item.taskContent}
             </div>
            <button class="border border-white bg-white col-1" onclick="deleteTaskCheck(${item.taskCode})"> <i class='fa fa-trash text-muted'></i></button>
-           <button class="border border-white bg-white col-1" onclick="checkTask(${item.taskCode})">  <i class='fa fa-check-circle text-success'></i></button>
+           <button class="border border-white bg-white col-1" onclick="unCheckTask(${item.taskCode})">  <i class='fa fa-check-circle text-success'></i></button>
             </li>
             `
         })
@@ -175,6 +175,29 @@ const checkTask = (taskCode) =>{
 deleteTask(taskCode);
 
 
+}
+const unCheckTask = (taskCode)=>{
+    listTask=loadData();
+   listTaskDone = loadDataCheck();
+    
+    let arrayTask = listTaskDone.find(item => item.taskCode == taskCode);
+
+
+
+    //khai báo và gán dữ liệu cho đối tượng food
+    let task = new Task( arrayTask.taskContent, taskCode);
+    // cách viết es5
+    // listFood.push(food);
+
+    // cách viết es6
+    if(listTask)
+   {listTask = [...listTask, task];}
+   else {listTask=[task]}
+
+   saveData(listTask);
+   showData(listTask);
+
+deleteTaskCheck(taskCode);
 }
 //xắp xếp a-z
 document.querySelector("#two").onclick = () =>{
