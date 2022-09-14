@@ -10,14 +10,20 @@ class Task {
 
 let listTask = [];
 let listTaskDone =[];
-let taskCode = 1;
+
 document.querySelector("#addItem").onclick = () => {
+
 
     listTask = loadData();
   
     //DOM tới input lấy giá trị
     let taskContent = document.querySelector("#newTask").value;
-taskCode+=1;
+
+
+
+
+ let taskCode=Math.random();
+
 
     //khai báo và gán dữ liệu cho đối tượng food
     let task = new Task( taskContent, taskCode);
